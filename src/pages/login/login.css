@@ -1,0 +1,115 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", sans-serif;
+}
+
+.register-container {
+  height: 100vh;
+  background: url("https://images.unsplash.com/photo-1489599849927-2ee91cede3ba")
+    center/cover no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    135deg,
+    rgba(0, 0, 0, 0.85),
+    rgba(20, 20, 20, 0.9)
+  );
+}
+
+.register-card {
+  position: relative;
+  z-index: 2;
+  width: 380px;
+  padding: 40px;
+  border-radius: 20px;
+  backdrop-filter: blur(15px);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  text-align: center;
+}
+
+.title {
+  color: #ece8e8;
+  margin-bottom: 5px;
+}
+
+.register-card h2 {
+  margin-bottom: 25px;
+  font-weight: 400;
+}
+
+.input-group {
+  margin-bottom: 18px;
+  text-align: left;
+  position: relative;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  background: rgba(163, 161, 161, 0.15);
+  color: white;
+}
+
+.input-group span {
+  color: #444242;
+  font-size: 12px;
+}
+
+.password-group {
+  display: flex;
+  align-items: center;
+}
+
+.password-group input {
+  flex: 1;
+}
+
+.toggle {
+  margin-left: -35px;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+.register-btn {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: none;
+  background: #565454;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.register-btn:hover {
+
+  transform: scale(1.05);
+}
+
+.login-link {
+  margin-top: 15px;
+  font-size: 14px;
+}
+
+.login-link a {
+ 
+  text-decoration: none;
+}

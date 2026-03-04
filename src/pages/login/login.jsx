@@ -1,8 +1,8 @@
 import { useState } from "react";
-import "./Register.css";
+import "./login.css";
 import { Link } from "react-router-dom";
 
-export default function RegisterPage() {
+export default function LoginPage() {
   const [form, setForm] = useState({
     username: "",
     email: "",
@@ -59,7 +59,7 @@ export default function RegisterPage() {
       <div className="overlay"></div>
 
       <form className="register-card" onSubmit={handleSubmit}>
-        <h1 className="title">Create Account</h1>
+        <h1 className="title">Welcome Back</h1>
 
         <div className="input-group">
           <input
@@ -94,25 +94,13 @@ export default function RegisterPage() {
           {errors.password && <span>{errors.password}</span>}
         </div>
 
-        <div className="input-group">
-          <input
-            type="password"
-            name="confirmPassword"
-            placeholder="Confirm Password"
-            value={form.confirmPassword}
-            onChange={handleChange}
-          />
-          {errors.confirmPassword && <span>{errors.confirmPassword}</span>}
-        </div>
-
         <button type="submit" className="register-btn">
-          Register
+          Login
         </button>
 
-        <p className="login-link">
-          Already have an account?{" "}
-          <Link to="/login" className="login-btn">
-            Login
+        <p className="login-link">{" "}
+          <Link to="/register" className="login-btn">
+            Register
           </Link>
         </p>
       </form>
