@@ -31,7 +31,7 @@ function MovieRecommender() {
   const abortRef      = useRef(null);
   const actorAbortRef = useRef(null);
 
-  // ── Поиск актёра ──
+ 
   const searchActor = async (query) => {
     setActorQuery(query);
     setActorId(null);
@@ -71,14 +71,14 @@ function MovieRecommender() {
     setActorSuggestions([]);
   };
 
-  // ── Вспомогательная функция fetch с проверкой ──
+
   const safeFetch = async (url, signal) => {
     const res = await fetch(url, { signal });
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     return res.json();
   };
 
-  // ── Основной запрос ──
+
   const recommendMovie = async () => {
     if (abortRef.current) abortRef.current.abort();
     abortRef.current = new AbortController();
@@ -135,7 +135,7 @@ function MovieRecommender() {
     
       const pick = movies[Math.floor(Math.random() * movies.length)];
 
-      // Детали + credits параллельно
+     
       const [detail, credits] = await Promise.all([
         safeFetch(`${BASE_URL}/movie/${pick.id}?api_key=${API_KEY}&language=ru-RU`, signal),
         safeFetch(`${BASE_URL}/movie/${pick.id}/credits?api_key=${API_KEY}&language=ru-RU`, signal),

@@ -109,30 +109,29 @@ body {
 }
 
 .sea {
-  background: var(--accent);
-  color: #0a0a0f;
+  background: linear-gradient(135deg, #ff4d6d 0%, #7b61ff 100%);
+  color: #ffffff;
   border: none;
   border-radius: 50px;
   padding: 16px 32px;
   font-family: 'DM Sans', sans-serif;
   font-size: 14px;
-  font-weight: 500;
-  letter-spacing: 0.06em;
+  font-weight: 600;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   cursor: pointer;
-  transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
   white-space: nowrap;
   flex-shrink: 0;
+
+  /* статичный, но выразительный эффект */
+  box-shadow: 0 6px 18px rgba(123, 97, 255, 0.25);
 }
 
+/* ховер — чуть ярче, но без анимации */
 .sea:hover {
-  background: #f5d98a;
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(232, 201, 125, 0.35);
+  background: linear-gradient(135deg, #ff5f7d 0%, #8a6eff 100%);
+  box-shadow: 0 8px 24px rgba(123, 97, 255, 0.35);
 }
-
-.sea:active { transform: translateY(0); }
-
 
 .card {
   display: grid;
