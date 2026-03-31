@@ -1,0 +1,300 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap');
+
+:root {
+  --bg: #0a0a0f;
+  --surface: #111118;
+  --surface2: #1a1a26;
+  --border: rgba(255, 255, 255, 0.07);
+  --accent: #e8c97d;
+  --accent2: #c77dff;
+  --text: #f0eee8;
+  --muted: #6b6a76;
+  --radius: 14px;
+  --shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+  --shadow-sm: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  padding: 24px 0;
+  transition: padding 0.4s ease, background 0.4s ease, backdrop-filter 0.4s ease, box-shadow 0.4s ease;
+}
+
+.header::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(10, 10, 15, 0.95) 0%, transparent 100%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+
+.header.sticky {
+  padding: 14px 0;
+  background: rgba(10, 10, 15, 0.75);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.06), 0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+.header.sticky::before {
+  opacity: 1;
+}
+
+
+.header .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  z-index: 1;
+}
+
+.logo a {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 26px;
+  letter-spacing: 0.12em;
+  text-decoration: none;
+  background: linear-gradient(135deg, #e8c97d 0%, #fff 50%, #c77dff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  transition: opacity 0.2s;
+  background-size: 200% 200%;
+  animation: logoShimmer 6s ease infinite;
+}
+
+.logo a:hover {
+  opacity: 0.85;
+}
+
+@keyframes logoShimmer {
+  0%, 100% { background-position: 0% 50%; }
+  50%       { background-position: 100% 50%; }
+}
+
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.nav a {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: rgba(240, 238, 232, 0.55);
+  padding: 8px 16px;
+  border-radius: 50px;
+  border: 1px solid transparent;
+  transition: color 0.25s, border-color 0.25s, background 0.25s, box-shadow 0.25s;
+  position: relative;
+}
+
+.nav a:hover {
+  color: #f0eee8;
+  border-color: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+
+.nav a:last-child {
+  color: #0a0a0f;
+  background: #e8c97d;
+  border-color: #e8c97d;
+  padding: 8px 20px;
+}
+
+.nav a:last-child:hover {
+  background: #f5d98a;
+  border-color: #f5d98a;
+  box-shadow: 0 6px 20px rgba(232, 201, 125, 0.35);
+  transform: translateY(-1px);
+}
+
+
+@media (max-width: 520px) {
+  .header .container { padding: 0 20px; }
+  .nav { gap: 4px; }
+  .nav a { padding: 7px 12px; font-size: 12px; }
+  .nav a:last-child { padding: 7px 14px; }
+  .logo a { font-size: 22px; }
+}
+
+/* ── Nav User Button ── */
+.nav-user {
+  position: relative;
+}
+
+.nav-user-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 50px;
+  padding: 6px 14px 6px 6px;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.nav-user-btn:hover {
+  border-color: rgba(232, 201, 125, 0.35);
+  background: rgba(232, 201, 125, 0.06);
+}
+
+/* ── Avatar Circle ── */
+.nav-avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: #0a0a0f;
+  flex-shrink: 0;
+}
+
+.nav-username {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  color: rgba(240, 238, 232, 0.75);
+  max-width: 120px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.nav-chevron {
+  font-size: 12px;
+  color: var(--muted);
+  transition: transform 0.25s;
+  line-height: 1;
+}
+
+.nav-chevron.open {
+  transform: rotate(180deg);
+}
+
+/* ── Dropdown ── */
+.nav-dropdown {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  width: 240px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+  animation: fadeInUp 0.2s cubic-bezier(0.22, 1, 0.36, 1) both;
+  z-index: 200;
+}
+
+/* top accent line */
+.nav-dropdown::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 15%; right: 15%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  opacity: 0.5;
+}
+
+/* ── Dropdown Info ── */
+.nav-dropdown-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+}
+
+.nav-dropdown-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  color: #0a0a0f;
+  flex-shrink: 0;
+}
+
+.nav-dropdown-name {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text);
+  line-height: 1.2;
+}
+
+.nav-dropdown-email {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 300;
+  color: var(--muted);
+  margin-top: 2px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 160px;
+}
+
+/* ── Divider ── */
+.nav-dropdown-divider {
+  height: 1px;
+  background: var(--border);
+  margin: 0 16px;
+}
+
+/* ── Logout Button ── */
+.nav-dropdown-logout {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 16px;
+  background: none;
+  border: none;
+  color: rgba(81, 79, 79, 0.75);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  text-align: left;
+}
+
+.nav-dropdown-logout:hover {
+  background: rgba(255, 107, 107, 0.08);
+  color: #ff6b6b;
+}
+
+.nav-dropdown-logout span {
+  font-size: 16px;
+  line-height: 1;
+}
